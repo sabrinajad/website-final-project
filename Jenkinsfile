@@ -23,8 +23,8 @@ pipeline {
             steps {
                         sh """
                            export BUILD_NUMBER=\$(cat ../build.txt)
-                           cat Deployment/Website_deployment.yml | envsubst > Deployment/Website_deployment.tmp
-                           mv Deployment/Website_deployment.tmp Deployment/Website_deployment.yml
+                           cat Deployment/Website.yml | envsubst > Deployment/Website.tmp
+                           mv Deployment/Website.tmp Deployment/Website.yml
                            gcloud auth activate-service-account thecontroller@sabrinnasr2050.iam.gserviceaccount.com  --key-file="$GCLOUD"
                            gcloud container clusters get-credentials final-project --zone us-central1-a --project sabrinnasr2050
                            kubectl apply -f Deployment --kubeconfig=${CONFIG}
